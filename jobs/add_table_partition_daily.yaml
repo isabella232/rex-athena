@@ -1,0 +1,11 @@
+# date in YYYY/MM/DD format
+workflow_inputs: 
+  - date
+steps:
+  add_table_partition:
+    table: rex_internal_enrich_all_accounts
+    partitions: 
+      received_year: "{{ date.split('/')[0] }}"
+      received_month: "{{ date.split('/')[1] }}"
+      received_day: "{{ date.split('/')[2] }}"
+    s3_input: "s3://rex-export/enrich/{{ date }}/"

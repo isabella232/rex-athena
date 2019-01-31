@@ -1,0 +1,59 @@
+[
+    {
+        "name": "SegmentAvro",
+        "type": "record",
+        "namespace": "com.optimizely.export.model",
+        "fields": [
+            {"name": "id",          "type": ["null", "long"],       "default": null },
+            {"name": "value",       "type": "string"}
+        ]
+    },
+    {
+        "name": "ResultRecordExportAvro",
+        "type": "record",
+        "namespace": "com.optimizely.export.model",
+        "fields": [
+            {"name": "id",                    "type": "string" },
+            {"name": "accountId",             "type": ["null", "long"],     "default": null },
+            {"name": "projectId",             "type": ["null", "long"],     "default": null },
+            {"name": "experimentId",          "type": "long" },
+            {"name": "visitorId",             "type": "string" },
+            {"name": "campaignId",            "type": ["null", "string"],   "default": null },
+            {"name": "timestamp",             "type": "long"},
+            {"name": "sessionId",             "type": "int"},
+            {"name": "eventId",               "type": "long"},
+            {"name": "count",                 "type": "int"},
+            {"name": "revenue",               "type": "long"},
+            {"name": "value",                 "type": "double"},
+            {"name": "variationId",           "type": "string"},
+            {"name": "segments",              "type": ["null", {"type": "array", "items": "SegmentAvro"}],  "default": null },
+            {"name": "receivedTimestamp",     "type": "long"}
+        ]
+    },
+    {
+        "name": "ResultRecordInternalExportAvro",
+        "type": "record",
+        "namespace": "com.optimizely.export.model",
+        "fields": [
+            {"name": "id",                          "type": "string" },
+            {"name": "accountId",                   "type": ["null", "long"],     "default": null },
+            {"name": "projectId",                   "type": ["null", "long"],     "default": null },
+            {"name": "experimentId",                "type": "long" },
+            {"name": "visitorId",                   "type": ["null", "string"],  "default": null },
+            {"name": "visitorUUID",                 "type": "int" },
+            {"name": "originalSessionId",           "type": "int" },
+            {"name": "layerId",                     "type": ["null", "string"],   "default": null },
+            {"name": "timestamp",                   "type": "long" },
+            {"name": "sessionId",                   "type": ["null", "int"],      "default": null },
+            {"name": "eventId",                     "type": "long"},
+            {"name": "count",                       "type": "int"},
+            {"name": "revenue",                     "type": "long"},
+            {"name": "value",                       "type": "double"},
+            {"name": "variationId",                 "type": "string"},
+            {"name": "shouldStartCountingSession",   "type": "boolean"},
+            {"name": "shouldStartCountingVisitor",   "type": "boolean"},
+            {"name": "segments",              "type": ["null", {"type": "array", "items": "SegmentAvro"}],  "default": null },
+            {"name": "receivedTimestamp",     "type": "long"}
+        ]
+    }
+]

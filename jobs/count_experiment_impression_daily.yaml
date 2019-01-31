@@ -1,0 +1,14 @@
+# date in YYYY/MM/DD format
+workflow_inputs: 
+  - date
+steps:
+  queries:
+    - 
+      query: "SELECT accountId, experimentId, SUM(count)
+        FROM rex_internal_enrich_all_accounts 
+        WHERE eventId = experimentId 
+        AND received_year={{ date.split('/')[0] }}
+          AND received_month={{ date.split('/')[1] }}
+          AND received_day={{ date.split('/')[2] }}
+        GROUP BY accountId, experimentId"
+      s3_output: "s3://rex-export/money/experiment_impression/{{date}}"
